@@ -75,6 +75,10 @@
             max-width: 300px;
             margin-top: 20px;
         }
+        .new-year-section {
+            display: none;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -113,7 +117,23 @@
             </div>
         </div>
 
-        <p>Have a great Monday, baby. ❤️</p>
+        <!-- New Year Button -->
+        <button class="button" onclick="startNewYear()">New Year Coming</button>
+
+        <!-- New Year Section -->
+        <div class="new-year-section" id="new-year">
+            <h2>Do you like my Christmas decorations?</h2>
+            <img src="https://i.pinimg.com/736x/7a/dd/c1/7addc1fe7a0460cf179de889547867a7.jpg" alt="Christmas Decorations" width="300">
+            <div class="quiz-options">
+                <button onclick="newYearOption('no')">No</button>
+                <button onclick="newYearOption('yes')">Yes</button>
+            </div>
+            <div class="quiz-result" id="new-year-result">
+                <!-- Result image will appear here -->
+            </div>
+        </div>
+
+        <p>Miss you babe. ❤️</p>
     </div>
 
     <footer>
@@ -139,7 +159,21 @@
             }
             resultDiv.innerHTML = `<img src="${imageUrl}" alt="Result Image">`;
         }
+
+        function startNewYear() {
+            document.getElementById('new-year').style.display = 'block';
+        }
+
+        function newYearOption(choice) {
+            const resultDiv = document.getElementById('new-year-result');
+            let imageUrl = '';
+            if (choice === 'no') {
+                imageUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjENQekC4qIVdYlJChiZxUu091SdTFWyj6aw&s';
+            } else if (choice === 'yes') {
+                imageUrl = 'https://scontent.xx.fbcdn.net/v/t1.15752-9/465880551_1125797839081518_8213268667043088996_n.jpg?stp=dst-jpg_p480x480_tt6&_nc_cat=103&ccb=1-7&_nc_sid=0024fc&_nc_ohc=YDbVLcJ2vEwQ7kNvgEc0JSc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1gEcXLbqR_-flcpCeyopEt1cUPBdyH6CBZZg0W3LT44sng&oe=678A746E';
+            }
+            resultDiv.innerHTML = `<img src="${imageUrl}" alt="Result Image">`;
+        }
     </script>
 </body>
 </html>
-
