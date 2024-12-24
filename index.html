@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f8f1f6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #ffccd5;
+            padding: 20px;
+        }
+        header h1 {
+            margin: 0;
+            color: #ff597b;
+        }
+        .content {
+            padding: 20px;
+        }
+        .gif {
+            margin: 20px 0;
+        }
+        #second-gif {
+            display: none;
+        }
+        footer {
+            background-color: #ffccd5;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+        .button {
+            background-color: #ff597b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #ff8a9f;
+        }
+        .quiz-section {
+            display: none;
+            margin-top: 20px;
+        }
+        .quiz-options button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #ffccd5;
+            color: #333;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .quiz-options button:hover {
+            background-color: #ff8a9f;
+            color: white;
+        }
+        .quiz-result img {
+            max-width: 300px;
+            margin-top: 20px;
+        }
+        .christmas-input {
+            margin-top: 20px;
+        }
+        .christmas-input input {
+            border: 2px solid #ff597b;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 16px;
+            outline: none;
+            background-image: url('https://www.pngmart.com/files/7/Christmas-Lights-PNG-Transparent.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>For the best boyfriend ever</h1>
+    </header>
+
+    <div class="content">
+        <p>Here's a little website just for you to remind you how much I care about you. 💕</p>
+
+        <!-- First Lovely GIF -->
+        <div class="gif">
+            <img src="https://media.giphy.com/media/dpSrm4cwUmCeQ/giphy.gif" alt="Lovely GIF 1" width="300">
+        </div>
+
+        <!-- Button to reveal the second GIF -->
+        <button class="button" onclick="showSecondGif()">Open it</button>
+
+        <!-- Second Lovely GIF -->
+        <div class="gif" id="second-gif">
+            <img src="https://media.giphy.com/media/16bJmyPvRbCDu/giphy.gif" alt="Lovely GIF 2" width="300">
+        </div>
+
+        <!-- Quiz Button -->
+        <button class="button" onclick="startQuiz()">Start a quiz</button>
+
+        <!-- Quiz Section -->
+        <div class="quiz-section" id="quiz">
+            <h2>Would you rather have 99 khinkali or 1 and special?</h2>
+            <div class="quiz-options">
+                <button onclick="chooseOption('99')">99 Khinkali</button>
+                <button onclick="chooseOption('special')">1 and special</button>
+            </div>
+            <div class="quiz-result" id="quiz-result">
+                <!-- Result image will appear here -->
+            </div>
+        </div>
+
+        <!-- Christmas Question Section -->
+        <div class="christmas-input">
+            <h2>What do you want for Christmas &lt;3 ?</h2>
+            <input type="text" placeholder="Your answer here...">
+        </div>
+
+        <p>Miss you babe. ❤️</p>
+    </div>
+
+    <footer>
+        <p>Made with love by [Tiko]</p>
+    </footer>
+
+    <script>
+        function showSecondGif() {
+            document.getElementById('second-gif').style.display = 'block';
+        }
+
+        function startQuiz() {
+            document.getElementById('quiz').style.display = 'block';
+        }
+
+        function chooseOption(choice) {
+            const resultDiv = document.getElementById('quiz-result');
+            let imageUrl = '';
+            if (choice === '99') {
+                imageUrl = 'https://thumbs.dreamstime.com/b/try-again-dark-metal-icon-isolated-white-background-89083710.jpg';
+            } else if (choice === 'special') {
+                imageUrl = 'https://scontent.xx.fbcdn.net/v/t1.15752-9/462641186_379988968536045_3410842792299085650_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=0024fc&_nc_ohc=0NYB_ZBrmMMQ7kNvgF8spg5&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QFb0CUZzZ2TD5lcVHLolhfAvJwj9fr92kcPJN_4hhn0sA&oe=6788C745';
+            }
+            resultDiv.innerHTML = `<img src="${imageUrl}" alt="Result Image">`;
+        }
+    </script>
+</body>
+</html>
