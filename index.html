@@ -75,24 +75,25 @@
             max-width: 300px;
             margin-top: 20px;
         }
-        .christmas-section {
+        .christmas-input {
             margin-top: 20px;
         }
-        .decorated-input {
-            border: 2px solid #ff597b;
-            border-radius: 10px;
+        .christmas-input input {
             padding: 10px;
-            width: 80%;
-            max-width: 400px;
             font-size: 16px;
-            background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
-            background-clip: padding-box;
-            color: #333;
+            border: 2px solid #ffccd5;
+            border-radius: 5px;
+            background: url('https://i.pinimg.com/736x/7a/dd/c1/7addc1fe7a0460cf179de889547867a7.jpg') no-repeat right;
+            background-size: contain;
+            margin-bottom: 10px;
+            width: 80%;
         }
-        .answers {
+        .christmas-answers {
             margin-top: 20px;
-            font-style: italic;
-            color: #555;
+        }
+        .christmas-answers p {
+            font-size: 16px;
+            color: #ff597b;
         }
     </style>
 </head>
@@ -132,13 +133,18 @@
             </div>
         </div>
 
-        <!-- Christmas Section -->
-        <div class="christmas-section">
+        <!-- Christmas Question -->
+        <div class="christmas-input" id="christmas-input">
             <h2>What do you want for Christmas?</h2>
-            <input type="text" id="christmas-input" class="decorated-input" placeholder="Write your answer here...">
-            <button class="button" onclick="saveAnswer()">Submit</button>
-            <div class="answers" id="christmas-answers"></div>
+            <input type="text" id="christmas-answer" placeholder="Your answer here...">
+            <button class="button" onclick="saveChristmasAnswer()">Submit</button>
         </div>
+
+        <div class="christmas-answers" id="christmas-answers">
+            <!-- Saved answers will appear here -->
+        </div>
+
+        <p>Miss you babe. ❤️</p>
     </div>
 
     <footer>
@@ -165,20 +171,24 @@
             resultDiv.innerHTML = `<img src="${imageUrl}" alt="Result Image">`;
         }
 
-        function saveAnswer() {
-            const input = document.getElementById('christmas-input');
-            const answer = input.value;
-            const answersDiv = document.getElementById('christmas-answers');
-            if (answer.trim() !== '') {
-                const answerParagraph = document.createElement('p');
-                answerParagraph.textContent = `You want: ${answer}`;
-                answersDiv.appendChild(answerParagraph);
-                input.value = '';
+        function saveChristmasAnswer() {
+            const answer = document.getElementById('christmas-answer').value;
+            if (answer) {
+                const answersDiv = document.getElementById('christmas-answers');
+                const newAnswer = document.createElement('p');
+                newAnswer.textContent = `🎁 ${answer}`;
+                answersDiv.appendChild(newAnswer);
 
-                // Add the "Another one?" question
-                const anotherQuestion = document.createElement('p');
-                anotherQuestion.textContent = 'Another one? 😊';
-                answersDiv.appendChild(anotherQuestion);
+                // Clear the input field
+                document.getElementById('christmas-answer').value = '';
+
+                // Add another question
+                if (!document.getElementById('another-question')) {
+                    const anotherQuestion = document.createElement('h2');
+                    anotherQuestion.id = 'another-question';
+                    anotherQuestion.textContent = 'Another one? 😊';
+                    answersDiv.appendChild(anotherQuestion);
+                }
             }
         }
     </script>
