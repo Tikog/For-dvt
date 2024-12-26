@@ -24,6 +24,12 @@
         .content {
             padding: 20px;
         }
+        .gif {
+            margin: 20px 0;
+        }
+        #second-gif {
+            display: none;
+        }
         footer {
             background-color: #ffccd5;
             padding: 10px;
@@ -47,43 +53,46 @@
         .button:hover {
             background-color: #ff8a9f;
         }
-        .list-container {
+        .quiz-section {
+            display: none;
             margin-top: 20px;
         }
-        .list-item {
-            display: inline-block;
+        .quiz-options button {
             margin: 10px;
-            padding: 20px;
-            font-size: 20px;
-            font-weight: bold;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
             background-color: #ffccd5;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            line-height: 60px;
-            cursor: pointer;
             color: #333;
-            position: relative;
+            border-radius: 5px;
+            cursor: pointer;
         }
-        .list-item:hover {
+        .quiz-options button:hover {
             background-color: #ff8a9f;
             color: white;
         }
-        .list-item span {
-            display: none;
-            position: absolute;
-            top: 80px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #ffccd5;
-            padding: 10px;
-            border-radius: 5px;
-            font-size: 16px;
-            color: #333;
+        .quiz-result img {
             max-width: 300px;
+            margin-top: 20px;
         }
-        .list-item.active span {
-            display: block;
+        .christmas-section {
+            margin-top: 20px;
+        }
+        .decorated-input {
+            border: 2px solid #ff597b;
+            border-radius: 10px;
+            padding: 10px;
+            width: 80%;
+            max-width: 400px;
+            font-size: 16px;
+            background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+            background-clip: padding-box;
+            color: #333;
+        }
+        .answers {
+            margin-top: 20px;
+            font-style: italic;
+            color: #555;
         }
     </style>
 </head>
@@ -95,19 +104,40 @@
     <div class="content">
         <p>Here's a little website just for you to remind you how much I care about you. 💕</p>
 
-        <button class="button" onclick="showListPage()">Things I Did for the First Time with You</button>
+        <!-- First Lovely GIF -->
+        <div class="gif">
+            <img src="https://media.giphy.com/media/dpSrm4cwUmCeQ/giphy.gif" alt="Lovely GIF 1" width="300">
+        </div>
 
-        <div class="list-container" id="list-container" style="display: none;">
-            <div class="list-item" onclick="toggleText(this)">1<span>Kiss in the rain</span></div>
-            <div class="list-item" onclick="toggleText(this)">2<span>Night walk after sex</span></div>
-            <div class="list-item" onclick="toggleText(this)">3<span>Four orgasms and 11-12 rounds</span></div>
-            <div class="list-item" onclick="toggleText(this)">4<span>Sex with music in the background</span></div>
-            <div class="list-item" onclick="toggleText(this)">5<span>Too much cuddling</span></div>
-            <div class="list-item" onclick="toggleText(this)">6<span>Too much kissing</span></div>
-            <div class="list-item" onclick="toggleText(this)">7<span>Sex while working</span></div>
-            <div class="list-item" onclick="toggleText(this)">8<span>Morning sex</span></div>
-            <div class="list-item" onclick="toggleText(this)">9<span>Waking up with kisses</span></div>
-            <div class="list-item" onclick="toggleText(this)">10<span>Having the most perfect BF ever</span></div>
+        <!-- Button to reveal the second GIF -->
+        <button class="button" onclick="showSecondGif()">Open it</button>
+
+        <!-- Second Lovely GIF -->
+        <div class="gif" id="second-gif">
+            <img src="https://media.giphy.com/media/16bJmyPvRbCDu/giphy.gif" alt="Lovely GIF 2" width="300">
+        </div>
+
+        <!-- Quiz Button -->
+        <button class="button" onclick="startQuiz()">Start a quiz</button>
+
+        <!-- Quiz Section -->
+        <div class="quiz-section" id="quiz">
+            <h2>Would you rather have 99 khinkali or 1 and special?</h2>
+            <div class="quiz-options">
+                <button onclick="chooseOption('99')">99 Khinkali</button>
+                <button onclick="chooseOption('special')">1 and special</button>
+            </div>
+            <div class="quiz-result" id="quiz-result">
+                <!-- Result image will appear here -->
+            </div>
+        </div>
+
+        <!-- Christmas Section -->
+        <div class="christmas-section">
+            <h2>What do you want for Christmas?</h2>
+            <input type="text" id="christmas-input" class="decorated-input" placeholder="Write your answer here...">
+            <button class="button" onclick="saveAnswer()">Submit</button>
+            <div class="answers" id="christmas-answers"></div>
         </div>
     </div>
 
@@ -116,20 +146,39 @@
     </footer>
 
     <script>
-        function showListPage() {
-            document.getElementById('list-container').style.display = 'block';
+        function showSecondGif() {
+            document.getElementById('second-gif').style.display = 'block';
         }
 
-        function toggleText(element) {
-            const isActive = element.classList.contains('active');
+        function startQuiz() {
+            document.getElementById('quiz').style.display = 'block';
+        }
 
-            // Remove active class from all items
-            const allItems = document.querySelectorAll('.list-item');
-            allItems.forEach(item => item.classList.remove('active'));
+        function chooseOption(choice) {
+            const resultDiv = document.getElementById('quiz-result');
+            let imageUrl = '';
+            if (choice === '99') {
+                imageUrl = 'https://thumbs.dreamstime.com/b/try-again-dark-metal-icon-isolated-white-background-89083710.jpg';
+            } else if (choice === 'special') {
+                imageUrl = 'https://scontent.xx.fbcdn.net/v/t1.15752-9/462641186_379988968536045_3410842792299085650_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=0024fc&_nc_ohc=0NYB_ZBrmMMQ7kNvgF8spg5&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QFb0CUZzZ2TD5lcVHLolhfAvJwj9fr92kcPJN_4hhn0sA&oe=6788C745';
+            }
+            resultDiv.innerHTML = `<img src="${imageUrl}" alt="Result Image">`;
+        }
 
-            // Add active class to the clicked item if it wasn't active
-            if (!isActive) {
-                element.classList.add('active');
+        function saveAnswer() {
+            const input = document.getElementById('christmas-input');
+            const answer = input.value;
+            const answersDiv = document.getElementById('christmas-answers');
+            if (answer.trim() !== '') {
+                const answerParagraph = document.createElement('p');
+                answerParagraph.textContent = `You want: ${answer}`;
+                answersDiv.appendChild(answerParagraph);
+                input.value = '';
+
+                // Add the "Another one?" question
+                const anotherQuestion = document.createElement('p');
+                anotherQuestion.textContent = 'Another one? 😊';
+                answersDiv.appendChild(anotherQuestion);
             }
         }
     </script>
