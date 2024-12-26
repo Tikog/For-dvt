@@ -194,3 +194,98 @@
     </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Things I Did for the First Time with You</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fdf5e6;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #ffccd5;
+            padding: 20px;
+        }
+        header h1 {
+            color: #ff597b;
+            margin: 0;
+        }
+        .numbers {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .number {
+            font-size: 24px;
+            color: #fff;
+            background-color: #ff8a9f;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+            cursor: pointer;
+            position: relative;
+        }
+        .number:hover {
+            background-color: #ff597b;
+        }
+        .number[data-x] {
+            position: absolute;
+            transform: translate(calc(var(--x) * 1px), calc(var(--y) * 1px));
+        }
+        .text {
+            display: none;
+            font-size: 18px;
+            color: #333;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Things I Did for the First Time with You</h1>
+    </header>
+
+    <div class="numbers">
+        <!-- Each number -->
+        <div class="number" style="--x: -50; --y: -50;" onclick="showText(1)">1</div>
+        <div class="number" style="--x: 50; --y: -70;" onclick="showText(2)">2</div>
+        <div class="number" style="--x: -70; --y: 30;" onclick="showText(3)">3</div>
+        <div class="number" style="--x: 40; --y: 60;" onclick="showText(4)">4</div>
+        <div class="number" style="--x: -20; --y: 100;" onclick="showText(5)">5</div>
+        <div class="number" style="--x: 70; --y: -20;" onclick="showText(6)">6</div>
+        <div class="number" style="--x: -60; --y: -100;" onclick="showText(7)">7</div>
+        <div class="number" style="--x: 20; --y: 40;" onclick="showText(8)">8</div>
+        <div class="number" style="--x: -10; --y: -60;" onclick="showText(9)">9</div>
+        <div class="number" style="--x: 30; --y: 80;" onclick="showText(10)">10</div>
+    </div>
+
+    <div class="text" id="text-1">Kiss in the rain</div>
+    <div class="text" id="text-2">Night walk after sex</div>
+    <div class="text" id="text-3">Four orgasms and 11-12 rounds</div>
+    <div class="text" id="text-4">Sex with music in the background</div>
+    <div class="text" id="text-5">Too much cuddling</div>
+    <div class="text" id="text-6">Too many kisses</div>
+    <div class="text" id="text-7">Sex while working</div>
+    <div class="text" id="text-8">Morning sex</div>
+    <div class="text" id="text-9">Waking up with kisses</div>
+    <div class="text" id="text-10">Having the most perfect BF ever</div>
+
+    <script>
+        function showText(number) {
+            document.querySelectorAll('.text').forEach(text => text.style.display = 'none');
+            document.getElementById(`text-${number}`).style.display = 'block';
+        }
+    </script>
+</body>
+</html>
