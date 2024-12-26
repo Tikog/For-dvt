@@ -24,12 +24,6 @@
         .content {
             padding: 20px;
         }
-        .gif {
-            margin: 20px 0;
-        }
-        #second-gif {
-            display: none;
-        }
         footer {
             background-color: #ffccd5;
             padding: 10px;
@@ -53,46 +47,43 @@
         .button:hover {
             background-color: #ff8a9f;
         }
-        .quiz-section {
-            display: none;
+        .list-container {
             margin-top: 20px;
         }
-        .quiz-options button {
+        .list-item {
+            display: inline-block;
             margin: 10px;
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
+            padding: 20px;
+            font-size: 20px;
+            font-weight: bold;
             background-color: #ffccd5;
-            color: #333;
-            border-radius: 5px;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
             cursor: pointer;
+            color: #333;
+            position: relative;
         }
-        .quiz-options button:hover {
+        .list-item:hover {
             background-color: #ff8a9f;
             color: white;
         }
-        .quiz-result img {
-            max-width: 300px;
-            margin-top: 20px;
-        }
-        .christmas-section {
-            margin-top: 20px;
-        }
-        .decorated-input {
-            border: 2px solid #ff597b;
-            border-radius: 10px;
+        .list-item span {
+            display: none;
+            position: absolute;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ffccd5;
             padding: 10px;
-            width: 80%;
-            max-width: 400px;
+            border-radius: 5px;
             font-size: 16px;
-            background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
-            background-clip: padding-box;
             color: #333;
+            max-width: 300px;
         }
-        .answers {
-            margin-top: 20px;
-            font-style: italic;
-            color: #555;
+        .list-item.active span {
+            display: block;
         }
     </style>
 </head>
@@ -104,40 +95,19 @@
     <div class="content">
         <p>Here's a little website just for you to remind you how much I care about you. 💕</p>
 
-        <!-- First Lovely GIF -->
-        <div class="gif">
-            <img src="https://media.giphy.com/media/dpSrm4cwUmCeQ/giphy.gif" alt="Lovely GIF 1" width="300">
-        </div>
+        <button class="button" onclick="showListPage()">Things I Did for the First Time with You</button>
 
-        <!-- Button to reveal the second GIF -->
-        <button class="button" onclick="showSecondGif()">Open it</button>
-
-        <!-- Second Lovely GIF -->
-        <div class="gif" id="second-gif">
-            <img src="https://media.giphy.com/media/16bJmyPvRbCDu/giphy.gif" alt="Lovely GIF 2" width="300">
-        </div>
-
-        <!-- Quiz Button -->
-        <button class="button" onclick="startQuiz()">Start a quiz</button>
-
-        <!-- Quiz Section -->
-        <div class="quiz-section" id="quiz">
-            <h2>Would you rather have 99 khinkali or 1 and special?</h2>
-            <div class="quiz-options">
-                <button onclick="chooseOption('99')">99 Khinkali</button>
-                <button onclick="chooseOption('special')">1 and special</button>
-            </div>
-            <div class="quiz-result" id="quiz-result">
-                <!-- Result image will appear here -->
-            </div>
-        </div>
-
-        <!-- Christmas Section -->
-        <div class="christmas-section">
-            <h2>What do you want for Christmas?</h2>
-            <input type="text" id="christmas-input" class="decorated-input" placeholder="Write your answer here...">
-            <button class="button" onclick="saveAnswer()">Submit</button>
-            <div class="answers" id="christmas-answers"></div>
+        <div class="list-container" id="list-container" style="display: none;">
+            <div class="list-item" onclick="toggleText(this)">1<span>Kiss in the rain</span></div>
+            <div class="list-item" onclick="toggleText(this)">2<span>Night walk after sex</span></div>
+            <div class="list-item" onclick="toggleText(this)">3<span>Four orgasms and 11-12 rounds</span></div>
+            <div class="list-item" onclick="toggleText(this)">4<span>Sex with music in the background</span></div>
+            <div class="list-item" onclick="toggleText(this)">5<span>Too much cuddling</span></div>
+            <div class="list-item" onclick="toggleText(this)">6<span>Too much kissing</span></div>
+            <div class="list-item" onclick="toggleText(this)">7<span>Sex while working</span></div>
+            <div class="list-item" onclick="toggleText(this)">8<span>Morning sex</span></div>
+            <div class="list-item" onclick="toggleText(this)">9<span>Waking up with kisses</span></div>
+            <div class="list-item" onclick="toggleText(this)">10<span>Having the most perfect BF ever</span></div>
         </div>
     </div>
 
@@ -146,135 +116,20 @@
     </footer>
 
     <script>
-        function showSecondGif() {
-            document.getElementById('second-gif').style.display = 'block';
+        function showListPage() {
+            document.getElementById('list-container').style.display = 'block';
         }
 
-        function startQuiz() {
-            document.getElementById('quiz').style.display = 'block';
-        }
+        function toggleText(element) {
+            const isActive = element.classList.contains('active');
 
-        function chooseOption(choice) {
-            const resultDiv = document.getElementById('quiz-result');
-            let imageUrl = '';
-            if (choice === '99') {
-                imageUrl = 'https://thumbs.dreamstime.com/b/try-again-dark-metal-icon-isolated-white-background-89083710.jpg';
-            } else if (choice === 'special') {
-                imageUrl = 'https://scontent.xx.fbcdn.net/v/t1.15752-9/462641186_379988968536045_3410842792299085650_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=0024fc&_nc_ohc=0NYB_ZBrmMMQ7kNvgF8spg5&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QFb0CUZzZ2TD5lcVHLolhfAvJwj9fr92kcPJN_4hhn0sA&oe=6788C745';
-            }
-            resultDiv.innerHTML = `<img src="${imageUrl}" alt="Result Image">`;
-        }
+            // Remove active class from all items
+            const allItems = document.querySelectorAll('.list-item');
+            allItems.forEach(item => item.classList.remove('active'));
 
-        function saveAnswer() {
-            const input = document.getElementById('christmas-input');
-            const answer = input.value;
-            const answersDiv = document.getElementById('christmas-answers');
-            if (answer.trim() !== '') {
-                const answerParagraph = document.createElement('p');
-                answerParagraph.textContent = `You want: ${answer}`;
-                answersDiv.appendChild(answerParagraph);
-                input.value = '';
-
-                // Add the "Another one?" question
-                const anotherQuestion = document.createElement('p');
-                anotherQuestion.textContent = 'Another one? 😊';
-                answersDiv.appendChild(anotherQuestion);
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Things I Did for the First Time with You</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #fdf5e6;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #ffccd5;
-            padding: 20px;
-        }
-        header h1 {
-            color: #ff597b;
-            margin: 0;
-        }
-        .numbers {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        .number {
-            font-size: 24px;
-            color: #fff;
-            background-color: #ff8a9f;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 10px;
-            cursor: pointer;
-            position: relative;
-        }
-        .number:hover {
-            background-color: #ff597b;
-        }
-        .number[data-x] {
-            position: absolute;
-            transform: translate(calc(var(--x) * 1px), calc(var(--y) * 1px));
-        }
-        .text {
-            display: none;
-            font-size: 18px;
-            color: #333;
-            margin-top: 10px;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Things I Did for the First Time with You</h1>
-    </header>
-
-    <div class="numbers">
-        <!-- Each number -->
-        <div class="number" style="--x: -50; --y: -50;" onclick="showText(1)">1</div>
-        <div class="number" style="--x: 50; --y: -70;" onclick="showText(2)">2</div>
-        <div class="number" style="--x: -70; --y: 30;" onclick="showText(3)">3</div>
-        <div class="number" style="--x: 40; --y: 60;" onclick="showText(4)">4</div>
-        <div class="number" style="--x: -20; --y: 100;" onclick="showText(5)">5</div>
-        <div class="number" style="--x: 70; --y: -20;" onclick="showText(6)">6</div>
-        <div class="number" style="--x: -60; --y: -100;" onclick="showText(7)">7</div>
-        <div class="number" style="--x: 20; --y: 40;" onclick="showText(8)">8</div>
-        <div class="number" style="--x: -10; --y: -60;" onclick="showText(9)">9</div>
-        <div class="number" style="--x: 30; --y: 80;" onclick="showText(10)">10</div>
-    </div>
-
-    <div class="text" id="text-1">Kiss in the rain</div>
-    <div class="text" id="text-2">Night walk after sex</div>
-    <div class="text" id="text-3">Four orgasms and 11-12 rounds</div>
-    <div class="text" id="text-4">Sex with music in the background</div>
-    <div class="text" id="text-5">Too much cuddling</div>
-    <div class="text" id="text-6">Too many kisses</div>
-    <div class="text" id="text-7">Sex while working</div>
-    <div class="text" id="text-8">Morning sex</div>
-    <div class="text" id="text-9">Waking up with kisses</div>
-    <div class="text" id="text-10">Having the most perfect BF ever</div>
-
-    <script>
-        function showText(number) {
-            document.querySelectorAll('.text').forEach(text => text.style.display = 'none');
-            document.getElementById(`text-${number}`).style.display = 'block';
-        }
-    </script>
-</body>
-</html>
-
+            // Add active class to the clicked item if it wasn't active
+            if (!isActive) {
+                element.classList.add('active');
             }
         }
     </script>
