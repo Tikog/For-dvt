@@ -6,139 +6,114 @@
     <title>For My Love</title>
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: Arial, sans-serif;
             text-align: center;
-            background: linear-gradient(to bottom right, #ffdde1, #ee9ca7);
+            background-color: #f8f1f6;
             color: #333;
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
         }
         header {
-            background-color: #ffb3c6;
+            background-color: #ffccd5;
             padding: 20px;
-            border-radius: 0 0 20px 20px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
         header h1 {
             margin: 0;
-            color: #fff;
-            font-size: 2.5rem;
+            color: #ff597b;
         }
         .content {
             padding: 20px;
         }
+        .gif {
+            margin: 20px 0;
+        }
+        #second-gif {
+            display: none;
+        }
         footer {
-            background-color: #ffb3c6;
+            background-color: #ffccd5;
             padding: 10px;
             position: fixed;
             bottom: 0;
             width: 100%;
-            box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.1);
         }
         footer p {
             margin: 0;
             font-size: 14px;
-            color: #fff;
         }
         .button {
-            background-color: #ff6f91;
+            background-color: #ff597b;
             color: white;
             border: none;
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
-            border-radius: 25px;
-            transition: background-color 0.3s ease;
+            border-radius: 5px;
         }
         .button:hover {
-            background-color: #ff8fb1;
+            background-color: #ff8a9f;
         }
-        .hearts {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 10;
-        }
-        .heart {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: #ff6f91;
-            clip-path: polygon(50% 0%, 100% 33%, 82% 100%, 50% 67%, 18% 100%, 0% 33%);
-            animation: float 4s ease-in-out infinite;
-        }
-        @keyframes float {
-            0% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh);
-                opacity: 0;
-            }
-        }
-        .surprise {
-            margin-top: 20px;
+        .quiz-section {
             display: none;
+            margin-top: 20px;
         }
-        .note {
-            margin: 20px 0;
-            font-size: 1.5rem;
-            color: #ff6f91;
-        }
-        .photo-gallery img {
-            width: 300px;
-            height: auto;
+        .quiz-options button {
             margin: 10px;
-            border-radius: 15px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #ffccd5;
+            color: #333;
+            border-radius: 5px;
+            cursor: pointer;
         }
-        .lovely-gif img {
-            width: 150px;
-            height: auto;
-            margin: 10px;
-            animation: bounce 2s infinite alternate;
+        .quiz-options button:hover {
+            background-color: #ff8a9f;
+            color: white;
         }
-        @keyframes bounce {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(-20px);
-            }
+        .quiz-result img {
+            max-width: 300px;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>For the Best Boyfriend Ever</h1>
+        <h1>For the best boyfriend ever</h1>
     </header>
 
     <div class="content">
-        <p class="note">You're my favorite person in the whole world! 💕</p>
+        <p>Here's a little website just for you to remind you how much I care about you. 💕</p>
 
-        <!-- Lovely GIFs -->
-        <div class="lovely-gif">
-            <img src="https://media.giphy.com/media/l0MYB8Ory7Hqefo9a/giphy.gif" alt="Lovely GIF 1">
-            <img src="https://media.giphy.com/media/26AHONQ79FdWZhAI0/giphy.gif" alt="Lovely GIF 2">
+        <!-- First Lovely GIF -->
+        <div class="gif">
+            <img src="https://media.giphy.com/media/dpSrm4cwUmCeQ/giphy.gif" alt="Lovely GIF 1" width="300">
         </div>
 
-        <!-- Interactive Hearts -->
-        <div class="hearts" id="hearts-container"></div>
+        <!-- Button to reveal the second GIF -->
+        <button class="button" onclick="showSecondGif()">Open it</button>
 
-        <!-- Secret Message Button -->
-        <button class="button" onclick="showSurprise()">Tap for a surprise</button>
+        <!-- Second Lovely GIF -->
+        <div class="gif" id="second-gif">
+            <img src="https://media.giphy.com/media/16bJmyPvRbCDu/giphy.gif" alt="Lovely GIF 2" width="300">
+        </div>
 
-        <div class="surprise" id="surprise-container">
-            <div class="photo-gallery">
-                <img src="images/IMG_4322.jpg" alt="Surprise 1">
-                <img src="images/IMG_4820.jpg" alt="Surprise 2">
+        <!-- Quiz Button -->
+        <button class="button" onclick="startQuiz()">Start a quiz</button>
+
+        <!-- Quiz Section -->
+        <div class="quiz-section" id="quiz">
+            <h2>Would you rather have 99 khinkali or 1 and special?</h2>
+            <div class="quiz-options">
+                <button onclick="chooseOption('99')">99 Khinkali</button>
+                <button onclick="chooseOption('special')">1 and special</button>
+            </div>
+            <div class="quiz-result" id="quiz-result">
+                <!-- Result image will appear here -->
             </div>
         </div>
+
+        <p>You're my favorite person in the whole world! 💕</p>
     </div>
 
     <footer>
@@ -146,23 +121,23 @@
     </footer>
 
     <script>
-        // Floating Hearts
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
-            document.getElementById('hearts-container').appendChild(heart);
-            setTimeout(() => {
-                heart.remove();
-            }, 5000);
+        function showSecondGif() {
+            document.getElementById('second-gif').style.display = 'block';
         }
-        setInterval(createHeart, 300);
 
-        // Show Surprise
-        function showSurprise() {
-            const surpriseContainer = document.getElementById('surprise-container');
-            surpriseContainer.style.display = 'block';
+        function startQuiz() {
+            document.getElementById('quiz').style.display = 'block';
+        }
+
+        function chooseOption(choice) {
+            const resultDiv = document.getElementById('quiz-result');
+            let imageUrl = '';
+            if (choice === '99') {
+                imageUrl = 'https://thumbs.dreamstime.com/b/try-again-dark-metal-icon-isolated-white-background-89083710.jpg';
+            } else if (choice === 'special') {
+                imageUrl = 'https://scontent.xx.fbcdn.net/v/t1.15752-9/462641186_379988968536045_3410842792299085650_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=0024fc&_nc_ohc=0NYB_ZBrmMMQ7kNvgF8spg5&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QFb0CUZzZ2TD5lcVHLolhfAvJwj9fr92kcPJN_4hhn0sA&oe=6788C745';
+            }
+            resultDiv.innerHTML = `<img src="${imageUrl}" alt="Result Image">`;
         }
     </script>
 </body>
