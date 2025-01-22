@@ -97,6 +97,20 @@
             border-radius: 15px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
         }
+        .lovely-gif img {
+            width: 150px;
+            height: auto;
+            margin: 10px;
+            animation: bounce 2s infinite alternate;
+        }
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-20px);
+            }
+        }
     </style>
 </head>
 <body>
@@ -107,6 +121,12 @@
     <div class="content">
         <p class="note">You're my favorite person in the whole world! 💕</p>
 
+        <!-- Lovely GIFs -->
+        <div class="lovely-gif">
+            <img src="https://media.giphy.com/media/l0MYB8Ory7Hqefo9a/giphy.gif" alt="Lovely GIF 1">
+            <img src="https://media.giphy.com/media/26AHONQ79FdWZhAI0/giphy.gif" alt="Lovely GIF 2">
+        </div>
+
         <!-- Interactive Hearts -->
         <div class="hearts" id="hearts-container"></div>
 
@@ -115,8 +135,8 @@
 
         <div class="surprise" id="surprise-container">
             <div class="photo-gallery">
-                <img src="/mnt/data/IMG_4322.jpg" alt="Surprise 1">
-                <img src="/mnt/data/IMG_4820.jpg" alt="Surprise 2">
+                <img src="images/IMG_4322.jpg" alt="Surprise 1">
+                <img src="images/IMG_4820.jpg" alt="Surprise 2">
             </div>
         </div>
     </div>
