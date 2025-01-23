@@ -139,6 +139,149 @@
             }
             resultDiv.innerHTML = `<img src="${imageUrl}" alt="Result Image">`;
         }
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Special Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f7f7f7;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #ff4e5b;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #ff4e5b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff2e3b;
+        }
+
+        .hidden {
+            display: none;
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        #firstPhoto {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        #heartSection {
+            margin-top: 30px;
+            position: relative;
+        }
+
+        .heart {
+            width: 40px;
+            height: 40px;
+            background-color: #ff4e5b;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            position: absolute;
+            animation: float 6s infinite;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .heart:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .heart:nth-child(2) { top: 20%; left: 25%; animation-delay: 2s; }
+        .heart:nth-child(3) { top: 30%; left: 50%; animation-delay: 4s; }
+        .heart:nth-child(4) { top: 50%; left: 75%; animation-delay: 6s; }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0); }
+            50% { transform: translateY(-20px) rotate(15deg); }
+            100% { transform: translateY(0) rotate(0); }
+        }
+
+        @keyframes sparkle {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: #ff4e5b;
+            border-radius: 50%;
+            animation: sparkle 1s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Our Special Place</h1>
+        
+        <!-- Secret Message Button -->
+        <button id="secretButton">Tap for a surprise</button>
+        
+        <!-- Hidden Section -->
+        <div id="secretSection" class="hidden">
+            <h2>Our First Photo Together</h2>
+            <img id="firstPhoto" src="https://postimg.cc/sM0HctWT" alt="Our First Photo">
+        </div>
+
+        <!-- Floating Hearts Section -->
+        <div id="heartSection">
+            <div class="heart" onclick="sparkleEffect(event)"></div>
+            <div class="heart" onclick="sparkleEffect(event)"></div>
+            <div class="heart" onclick="sparkleEffect(event)"></div>
+            <div class="heart" onclick="sparkleEffect(event)"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('secretButton').addEventListener('click', function() {
+            const secretSection = document.getElementById('secretSection');
+            secretSection.classList.toggle('hidden');
+        });
+
+        function sparkleEffect(event) {
+            const sparkle = document.createElement('div');
+            sparkle.classList.add('sparkle');
+            document.body.appendChild(sparkle);
+
+            const rect = event.target.getBoundingClientRect();
+            sparkle.style.left = rect.left + rect.width / 2 + 'px';
+            sparkle.style.top = rect.top + rect.height / 2 + 'px';
+
+            setTimeout(() => {
+                sparkle.remove();
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
+
     </script>
 </body>
 </html>
