@@ -53,29 +53,6 @@
         .button:hover {
             background-color: #ff8a9f;
         }
-        .quiz-section {
-            display: none;
-            margin-top: 20px;
-        }
-        .quiz-options button {
-            margin: 10px;
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            background-color: #ffccd5;
-            color: #333;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .quiz-options button:hover {
-            background-color: #ff8a9f;
-            color: white;
-        }
-        .quiz-result img {
-            max-width: 300px;
-            margin-top: 20px;
-        }
-
         .hidden {
             display: none;
             margin-top: 20px;
@@ -84,16 +61,14 @@
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
         }
-
-        #firstPhoto {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
+        #loveMessage {
+            font-size: 1.5rem;
+            color: #ff597b;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-
     <header>
         <h1>For the best boyfriend ever</h1>
     </header>
@@ -114,21 +89,6 @@
             <img src="https://media.giphy.com/media/16bJmyPvRbCDu/giphy.gif" alt="Lovely GIF 2" width="300">
         </div>
 
-        <!-- Quiz Button -->
-        <button class="button" onclick="startQuiz()">Start a quiz</button>
-
-        <!-- Quiz Section -->
-        <div class="quiz-section" id="quiz">
-            <h2>Would you rather have 99 khinkali or 1 and special?</h2>
-            <div class="quiz-options">
-                <button onclick="chooseOption('99')">99 Khinkali</button>
-                <button onclick="chooseOption('special')">1 and special</button>
-            </div>
-            <div class="quiz-result" id="quiz-result">
-                <!-- Result image will appear here -->
-            </div>
-        </div>
-
         <p>You're my favorite person in the whole world! 💕</p>
 
         <!-- Secret Message Button -->
@@ -139,6 +99,12 @@
             <h2>Our First Photo Together</h2>
             <img id="firstPhoto" src="https://i.postimg.cc/QMXLXDdZ/IMG-4322.jpg" alt="Our First Photo">
         </div>
+
+        <!-- It's time to say bebe Button -->
+        <button class="button" onclick="showLoveMessage()">It's time to say bebe</button>
+
+        <!-- Love Message -->
+        <p id="loveMessage" class="hidden">I love you so much 💕</p>
     </div>
 
     <footer>
@@ -150,25 +116,14 @@
             document.getElementById('second-gif').style.display = 'block';
         }
 
-        function startQuiz() {
-            document.getElementById('quiz').style.display = 'block';
-        }
-
-        function chooseOption(choice) {
-            const resultDiv = document.getElementById('quiz-result');
-            let imageUrl = '';
-            if (choice === '99') {
-                imageUrl = 'https://thumbs.dreamstime.com/b/try-again-dark-metal-icon-isolated-white-background-89083710.jpg';
-            } else if (choice === 'special') {
-                imageUrl = 'https://scontent.xx.fbcdn.net/v/t1.15752-9/462641186_379988968536045_3410842792299085650_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=0024fc&_nc_ohc=0NYB_ZBrmMMQ7kNvgF8spg5&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.xx&oh=03_Q7cD1QFb0CUZzZ2TD5lcVHLolhfAvJwj9fr92kcPJN_4hhn0sA&oe=6788C745';
-            }
-            resultDiv.innerHTML = `<img src="${imageUrl}" alt="Result Image">`;
-        }
-
         document.getElementById('secretButton').addEventListener('click', function() {
             const secretSection = document.getElementById('secretSection');
             secretSection.classList.toggle('hidden');
         });
+
+        function showLoveMessage() {
+            document.getElementById('loveMessage').classList.toggle('hidden');
+        }
     </script>
 </body>
 </html>
